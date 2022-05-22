@@ -186,12 +186,12 @@ extension LoginVC {
     
     // Go RegisterVC
     @objc func goRegisterVC(){
-        
+        self.navigationController?.pushViewController(RegisterVC(), animated: true)
     }
     
     // click forgot pw
     @objc func clickForgotPw(_ sender: Any){
-        
+        self.navigationController?.pushViewController(ForgotPasswordVC(), animated: true)
     }
 }
 

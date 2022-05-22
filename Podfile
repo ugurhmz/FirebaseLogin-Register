@@ -8,6 +8,7 @@ target 'LoginRegister' do
   # Pods for LoginRegister
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'Firebase/Core'
 
 end

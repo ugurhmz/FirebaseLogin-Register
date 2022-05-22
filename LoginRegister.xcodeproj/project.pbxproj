@@ -18,6 +18,7 @@
 		637F7F5F283A626600FD1420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 637F7F5E283A626600FD1420 /* GoogleService-Info.plist */; };
 		637F7F61283A67FC00FD1420 /* Extension+UIAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F7F60283A67FC00FD1420 /* Extension+UIAlert.swift */; };
 		637F7F63283A6F8800FD1420 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F7F62283A6F8800FD1420 /* HomeVC.swift */; };
+		637F7F66283A9CA600FD1420 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F7F65283A9CA600FD1420 /* ForgotPasswordVC.swift */; };
 		FEC279080B472E2997328DA2 /* Pods_LoginRegister.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0684B2E8A9F36A3B13F3B2A1 /* Pods_LoginRegister.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		637F7F5E283A626600FD1420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		637F7F60283A67FC00FD1420 /* Extension+UIAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIAlert.swift"; sourceTree = "<group>"; };
 		637F7F62283A6F8800FD1420 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		637F7F65283A9CA600FD1420 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		FFBF10C40265B5946AC6DEA3 /* Pods-LoginRegister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginRegister.release.xcconfig"; path = "Target Support Files/Pods-LoginRegister/Pods-LoginRegister.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				637F7F62283A6F8800FD1420 /* HomeVC.swift */,
+				637F7F64283A9C9900FD1420 /* ForgotPassword */,
 				637F7F5B283A4DE600FD1420 /* Register */,
 				637F7F5A283A4DDF00FD1420 /* Login */,
 			);
@@ -136,6 +139,14 @@
 				637F7F50283A4D7E00FD1420 /* RegisterVC.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		637F7F64283A9C9900FD1420 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				637F7F65283A9CA600FD1420 /* ForgotPasswordVC.swift */,
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		C4A0879E88A006BE01157FCF /* Frameworks */ = {
@@ -264,6 +275,7 @@
 				637F7F53283A4D7E00FD1420 /* Extension+UIView.swift in Sources */,
 				637F7F3A283A4D5500FD1420 /* AppDelegate.swift in Sources */,
 				637F7F63283A6F8800FD1420 /* HomeVC.swift in Sources */,
+				637F7F66283A9CA600FD1420 /* ForgotPasswordVC.swift in Sources */,
 				637F7F54283A4D7E00FD1420 /* RegisterVC.swift in Sources */,
 				637F7F52283A4D7E00FD1420 /* LoginVC.swift in Sources */,
 				637F7F61283A67FC00FD1420 /* Extension+UIAlert.swift in Sources */,

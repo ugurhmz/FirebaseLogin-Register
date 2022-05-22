@@ -5,6 +5,7 @@
 //  Created by ugur-pc on 22.05.2022.
 //
 import UIKit
+import Firebase
 
 class RegisterVC: UIViewController {
     
@@ -123,9 +124,47 @@ class RegisterVC: UIViewController {
     }()
     
     // click registerBtn
-    @objc func clickRegisterBtn(){
-       
-    }
+       @objc func clickRegisterBtn(){
+         
+           
+           guard let email = txtEmail.text, !email.isEmpty,
+                 let username = txtUsername.text, !username.isEmpty,
+                 let password = txtPassword.text, !password.isEmpty,
+                 let rePass = txtRePassword.text, !rePass.isEmpty
+
+           else {
+
+                     self.createAlert(title: "",
+                                      msg: "Fields can't be empty!",
+                                      prefStyle: .alert,
+                                      bgColor: .white,
+                                      textColor: .black,
+                                      fontSize: 25)
+                     return
+                 }
+
+           guard let rePassword = txtRePassword.text, rePassword == password else {
+               self.createAlert(title: "Error",
+                                msg: "Passwords do not match !",
+                                prefStyle: .alert,
+                                bgColor: .white,
+                                textColor: .black,
+                                fontSize: 25)
+               return
+           }
+
+           self.showActivityIndicator()
+
+           Auth.auth().createUser(withEmail: email, password: password) { result, error in
+               if let error = error {
+                   self.handleFireAuthError(error: error, fontSize: 24, textColor: .systemBrown, bgColor: .white)
+                   self.hideActivityIndicator()
+                   return
+               }
+               self.hideActivityIndicator()
+               self.navigationController?.popToRootViewController(animated: true)
+           }
+       }
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [registerTxtLabel,txtUsername,txtEmail, txtPassword,txtRePassword, registerBtn ])
