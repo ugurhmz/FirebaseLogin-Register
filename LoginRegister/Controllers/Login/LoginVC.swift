@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
     
@@ -86,6 +87,7 @@ class LoginVC: UIViewController {
         return btn
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -138,8 +140,9 @@ class LoginVC: UIViewController {
         registerBtn.layer.shadowOpacity = 1.3
         registerBtn.layer.shadowRadius = 0.7
         registerBtn.layer.shadowColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1).cgColor
+        
     }
-    
+   
 }
 
 //MARK: - @objc funcs
@@ -147,15 +150,43 @@ extension LoginVC {
     
     // clickLoginBtn
     @objc func clickLoginBtn(){
-        
-        
+       
+        guard let email = txtEmail.text, !email.isEmpty,
+              let password = txtPassword.text, !password.isEmpty else {
+                  self.createAlert(title: "",
+                                   msg: "Email or password is empty!",
+                                   prefStyle: .alert,
+                                   bgColor: .white,
+                                   textColor: .black,
+                                   fontSize: 25)
+                  return
+              }
+
+        self.showActivityIndicator()
+
+        // LOGIN AUTH
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                self.handleFireAuthError(error: error,
+                                         fontSize: 24,
+                                         textColor: #colorLiteral(red: 0.9254902005, green: 0.3018482075, blue: 0.1536569698, alpha: 1),
+                                         bgColor: .white)
+                self.hideActivityIndicator()
+                return
+            }
+            
+            self.hideActivityIndicator()
+            self.navigationController?.pushViewController(HomeVC(), animated: true)
+        }
     }
+    
+ 
     
     // Go RegisterVC
     @objc func goRegisterVC(){
-        let regVC = RegisterVC()
-        regVC.modalPresentationStyle = .pageSheet
-        present(regVC, animated: true, completion: nil)
+        
     }
     
     // click forgot pw
