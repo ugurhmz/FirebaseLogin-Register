@@ -217,7 +217,6 @@ class RegisterVC: UIViewController {
         view.backgroundColor = UIColor(red: 16/255, green: 129/255, blue: 49/255, alpha: 1)
         setupViews()
         setConstraints()
-        
     }
 }
 
@@ -236,6 +235,14 @@ extension RegisterVC {
     }
     
     private func setupShadows(){
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/2)
+        gradientLayer.colors = [UIColor.green.cgColor,  UIColor.blue.cgColor]
+        view.layer.addSublayer(gradientLayer)
+        view.bringSubviewToFront(myview)
+        view.bringSubviewToFront(personImgView)
+        view.bringSubviewToFront(stackView)
         
         myview.layer.cornerRadius = 50
         myview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

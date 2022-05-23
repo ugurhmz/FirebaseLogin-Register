@@ -101,7 +101,7 @@ class LoginVC: UIViewController {
         view.addSubview(loginTxtLabel)
         forgetPwTxtLabel.textAlignment = .right
         
-        view.backgroundColor = .blue.withAlphaComponent(0.7)
+        //view.backgroundColor = .blue.withAlphaComponent(0.7)
         view.bringSubviewToFront(stackView)
        
         myview.layer.cornerRadius = 50
@@ -117,10 +117,18 @@ class LoginVC: UIViewController {
     }
     
     private func setupShadows(){
-        myview.layer.shadowOpacity = 145
-        myview.layer.shadowRadius = 140
-        myview.layer.shadowColor = UIColor.red.cgColor
+//        myview.layer.shadowOpacity = 145
+//        myview.layer.shadowRadius = 170
+//        myview.layer.shadowColor = UIColor.red.cgColor
         
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/2)
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.blue.cgColor,  UIColor.blue.cgColor]
+        view.layer.addSublayer(gradientLayer)
+        view.bringSubviewToFront(loginTxtLabel)
+        view.bringSubviewToFront(myview)
+        view.bringSubviewToFront(personImgView)
+        view.bringSubviewToFront(stackView)
         
         txtEmail.layer.shadowOpacity = 2
         txtEmail.layer.shadowRadius = 2
