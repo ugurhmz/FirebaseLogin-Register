@@ -1,4 +1,4 @@
-### Login, Register, Forgot Password ( with email ), Authentication Error handle.
+### Login, Logout, Register, Forgot Password ( with email ), Authentication Error handle.
 
 ![ezgif com-gif-maker (21)](https://user-images.githubusercontent.com/13710309/169849085-9854b9a2-1a29-4f34-b814-44d31d59be28.gif)
 ![ezgif com-gif-maker (22)](https://user-images.githubusercontent.com/13710309/169848801-ea57531e-96e6-43a0-afd3-5111d01f49c9.gif)
