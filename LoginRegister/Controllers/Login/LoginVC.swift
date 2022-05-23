@@ -94,12 +94,6 @@ class LoginVC: UIViewController {
         setConstraints()
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
     private func setupViews() {
         view.addSubview(stackView)
         view.addSubview(myview)
@@ -120,7 +114,6 @@ class LoginVC: UIViewController {
         forgetPwTxtLabel.isUserInteractionEnabled = true
         let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(clickForgotPw(_:)))
         forgetPwTxtLabel.addGestureRecognizer(guestureRecognizer)
-        
     }
     
     private func setupShadows(){
@@ -148,7 +141,6 @@ class LoginVC: UIViewController {
         registerBtn.layer.shadowColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1).cgColor
         
     }
-   
 }
 
 //MARK: - @objc funcs
@@ -191,8 +183,6 @@ extension LoginVC {
         }
     }
     
- 
-    
     // Go RegisterVC
     @objc func goRegisterVC(){
         let view = RegisterVC()
@@ -202,7 +192,12 @@ extension LoginVC {
     
     // click forgot pw
     @objc func clickForgotPw(_ sender: Any){
-        self.navigationController?.pushViewController(ForgotPasswordVC(), animated: true)
+     
+        let view = ForgotPasswordVC()
+        view.modalPresentationStyle = .overFullScreen
+        self.present(view, animated: true, completion: nil)
+//        let nav = UINavigationController(rootViewController: view)
+//        self.view.window?.rootViewController = nav
     }
 }
 

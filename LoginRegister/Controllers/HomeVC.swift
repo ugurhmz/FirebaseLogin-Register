@@ -20,7 +20,7 @@ class HomeVC: UIViewController {
     private func customNavigateBar(){
         if #available(iOS 13.0, *) {
               let navBarAppearance = UINavigationBarAppearance()
-               navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font: UIFont(name: "Charter-Black", size: 30)!]
+               navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font: UIFont(name: "Charter-Black", size: 15)!]
              
                navigationController?.navigationBar.barStyle = .black
               navigationController?.navigationBar.standardAppearance = navBarAppearance
@@ -34,14 +34,12 @@ class HomeVC: UIViewController {
           }
     }
     
-
     private func isCurrentUserCheck(){
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
-               let navController = UINavigationController(rootViewController: LoginVC())
-                navController.modalPresentationStyle = .fullScreen
-               self.present(navController, animated: true, completion: nil)
-                
+                let view = LoginVC()
+                let nav = UINavigationController(rootViewController: view)
+                self.view.window?.rootViewController = nav
             }
         }
     }
@@ -50,7 +48,7 @@ class HomeVC: UIViewController {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = false
         //  user == true
-        if let user = Auth.auth().currentUser {
+        if let _ = Auth.auth().currentUser {
             
             let logOutImage = UIImage(systemName: "person.fill.xmark")?.withRenderingMode(.alwaysOriginal)
            navigationItem.leftBarButtonItem = UIBarButtonItem(image: logOutImage, style: .done,
@@ -78,7 +76,4 @@ class HomeVC: UIViewController {
             print(error.localizedDescription)
         }
     }
-    
-   
-
 }

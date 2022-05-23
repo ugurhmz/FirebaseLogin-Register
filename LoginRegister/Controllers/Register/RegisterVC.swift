@@ -202,8 +202,6 @@ class RegisterVC: UIViewController {
                    let nav = UINavigationController(rootViewController: view)
                    self.view.window?.rootViewController = nav
                }
-              
-               
            }
        }
     
@@ -270,7 +268,6 @@ extension RegisterVC {
     
     
     private func setConstraints(){
-        
             
         navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                       leading: view.leadingAnchor,
