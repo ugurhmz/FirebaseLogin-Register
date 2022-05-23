@@ -243,6 +243,8 @@ extension RegisterVC {
         view.bringSubviewToFront(myview)
         view.bringSubviewToFront(personImgView)
         view.bringSubviewToFront(stackView)
+        view.bringSubviewToFront(checkPaswoordFieldImg)
+        view.bringSubviewToFront(checkRePasswordImg)
         
         myview.layer.cornerRadius = 50
         myview.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
