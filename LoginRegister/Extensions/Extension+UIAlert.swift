@@ -80,6 +80,8 @@ extension AuthErrorCode {
             return "The password must be 6 characters long or more!"
         case .wrongPassword:
             return "Your password or email is incorrect!"
+        case .tooManyRequests:
+             return "You have requested too many logins, please try later"
         default:
             return "Sorry, something went wrong!"
         }

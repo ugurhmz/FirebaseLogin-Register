@@ -92,8 +92,14 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         setConstraints()
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
     private func setupViews() {
         view.addSubview(stackView)
         view.addSubview(myview)
@@ -178,7 +184,10 @@ extension LoginVC {
             }
             
             self.hideActivityIndicator()
-            self.navigationController?.pushViewController(HomeVC(), animated: true)
+           // self.navigationController?.pushViewController(HomeVC(), animated: true)
+            let view = HomeVC()
+            let nav = UINavigationController(rootViewController: view)
+            self.view.window?.rootViewController = nav
         }
     }
     
@@ -186,7 +195,9 @@ extension LoginVC {
     
     // Go RegisterVC
     @objc func goRegisterVC(){
-        self.navigationController?.pushViewController(RegisterVC(), animated: true)
+        let view = RegisterVC()
+        let nav = UINavigationController(rootViewController: view)
+        self.view.window?.rootViewController = nav
     }
     
     // click forgot pw

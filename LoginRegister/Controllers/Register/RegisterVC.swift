@@ -9,6 +9,36 @@ import Firebase
 
 class RegisterVC: UIViewController {
     
+    private let navigationBar : UINavigationBar = {
+               let navBar = UINavigationBar()
+               let navigationItem =  UINavigationItem()
+               let button = UIBarButtonItem()
+               let standardAppearance = UINavigationBarAppearance()
+               standardAppearance.configureWithTransparentBackground()
+               navigationItem.standardAppearance = standardAppearance
+               navigationItem.scrollEdgeAppearance = standardAppearance
+               navigationItem.compactAppearance = standardAppearance
+               let buttonAppearance = UIBarButtonItemAppearance()
+               buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black,.font : UIFont.systemFont(ofSize:25, weight: .medium)]
+               button.tintColor = .systemBlue
+               navigationItem.standardAppearance?.buttonAppearance = buttonAppearance
+               navigationItem.compactAppearance?.buttonAppearance = buttonAppearance
+               
+               button.image = UIImage(systemName: "chevron.left")
+               button.action = #selector(backToHomePageBtn)
+               navBar.layer.zPosition = 1
+               
+               navigationItem.leftBarButtonItem = button
+               navBar.setItems([navigationItem], animated: false)
+               return navBar
+       }()
+    
+    
+    @objc func backToHomePageBtn() {
+        let view = LoginVC()
+        let nav = UINavigationController(rootViewController: view)
+        self.view.window?.rootViewController = nav
+    }
     private let myview: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -162,7 +192,18 @@ class RegisterVC: UIViewController {
                    return
                }
                self.hideActivityIndicator()
-               self.navigationController?.popToRootViewController(animated: true)
+               self.createAlert(title: "Register",
+                                msg: "User register success.", prefStyle:
+                                        .alert,
+                                bgColor: .systemGreen, textColor: .white, fontSize: 24)
+              
+               DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                   let view = LoginVC()
+                   let nav = UINavigationController(rootViewController: view)
+                   self.view.window?.rootViewController = nav
+               }
+              
+               
            }
        }
     
@@ -178,8 +219,8 @@ class RegisterVC: UIViewController {
         view.backgroundColor = UIColor(red: 16/255, green: 129/255, blue: 49/255, alpha: 1)
         setupViews()
         setConstraints()
+        
     }
-    
 }
 
 //MARK: -
@@ -190,6 +231,7 @@ extension RegisterVC {
         view.addSubview(personImgView)
         view.addSubview(checkPaswoordFieldImg)
         view.addSubview(checkRePasswordImg)
+        view.addSubview(navigationBar)
         setupShadows()
         checkPaswoordFieldImg.isHidden = true
         checkRePasswordImg.isHidden = true
@@ -228,6 +270,13 @@ extension RegisterVC {
     
     
     private func setConstraints(){
+        
+            
+        navigationBar.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                      leading: view.leadingAnchor,
+                                      bottom: nil,
+                                      trailing: view.trailingAnchor)
+        
         myview.anchor(top: view.topAnchor,
                       leading: view.leadingAnchor,
                       bottom: view.bottomAnchor,
@@ -245,7 +294,7 @@ extension RegisterVC {
                               leading: nil,
                              bottom: myview.topAnchor,
                               trailing: nil,
-                              padding: .init(top: 20, left: 0, bottom: 30, right: 0),
+                              padding: .init(top: 40, left: 0, bottom: 30, right: 0),
                              size: .init(width: 150, height: 100)
         )
         personImgView.centerXInSuperview()
